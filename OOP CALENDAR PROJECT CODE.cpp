@@ -11,12 +11,12 @@ void heading(char ch, int i)
 	cout << ch;
 }
 
-class calendar
+class calender
 {
 	private:
 		int date, month,year;
 		public:
-		calendar(int d = 1, int m = 1, int y = 1900)
+		calender(int d = 1, int m = 1, int y = 1900)
 		{
 			date = d;
 			month = m;
@@ -29,7 +29,7 @@ class calendar
 		int DayNumber(int,int,int); 
 };
 
-bool calendar :: leapyear(int y)
+bool calender :: leapyear(int y)
 {
 	bool Leap;
 	if ((y % 4 == 0) && ((y % 100 != 0) || (y % 400 == 0)))
@@ -39,7 +39,7 @@ bool calendar :: leapyear(int y)
 	return Leap;
 }
 
-int calendar :: DaysInMonth(int m, int y)
+int calender :: DaysInMonth(int m, int y)
 {
 switch (m)
 {
@@ -58,7 +58,7 @@ switch (m)
 }
 }
 
-int calendar :: DayNumber(int d, int m, int y)
+int calender :: DayNumber(int d, int m, int y)
 {
 	int i;
 	int dow = 6;
@@ -73,7 +73,7 @@ int calendar :: DayNumber(int d, int m, int y)
 	return dow;
 }
 
-void calendar::day(int a)
+void calender::day(int a)
 {
 switch (a)
 {
@@ -103,7 +103,7 @@ switch (a)
 }
 }
 
-void calendar::monthcal(int month, int year)
+void calender::monthcal(int month, int year)
 {
 	int j, mon, c;
 	j = 0;
@@ -157,58 +157,58 @@ int main()
  { 
 	system("cls");
 	int i, date, year, month;
-	cout << "\t\t          CALENDAR";
-	cout << "\n\t\t -----------------------------------------";
-	cout << "\n\t\t Press 1: The day of a specific date.\n\t\t Press 2: View the calendar of any given month.\n\t\t Press 3: Exit. ";
-	cout << "\n\t\t -----------------------------------------";
-	cout << endl << endl << "\n\t\t Press your choice: ";
+	cout << "\n\t\t\t\t                    CALENDER";
+	cout << "\n\t\t\t\t -----------------------------------------------";
+	cout << "\n\t\t\t\t Press 1: The day of a specific date.\n\t\t\t\t Press 2: View the calendar of any given month.\n\t\t\t\t Press 3: Exit. ";
+	cout << "\n\t\t\t\t -----------------------------------------------";
+	cout << endl << endl << "\n\t\t\t\t Press your choice: ";
 	cin >> i;
-	if (i == 1) //Option 1
+	if (i == 1) 
 	{
-		cout << "\n\t\t Enter date(dd):";
+		cout << "\n\t\t\t\t Enter date:(dd)";
 		cin >> date;
 		if (date>31 || date<1)
 		{
-			cout << "\n\t\t Please provide valid date.\n\t\t Press any key";
+			cout << "\n\t\t\t\t Please provide valid date.\t\t\t\t Press any key";
 			getch();
 			system("cls");
 			main();
 		}
 		month:
-		cout << "\n\t\t Enter month(mm):";
+		cout << "\t\t\t\t Enter month:(mm)";
 		cin >> month;
 		if (month>12 || month<1)
 		{
-			cout << "\n\t\t Please provide valid month.\n\t\t Press any key";
+			cout << "\n\t\t\t\t Please provide valid month.\t\t\t\t Press any key";
 			getch();
 			goto month;
 		}
 		year:
-		cout << "\n\t\t Enter year(yyyy):";
+		cout << "\t\t\t\t Enter year:(yyyy)";
 		cin >> year;
 		if (year>2400 || year<1900)
 		{
 			getch();
 			goto year;
 		}
-		calendar obj(date, month, year);
+		calender obj(date, month, year);
 		i = obj.DayNumber(--date, month, year);
-		cout << "\n\t\t" << ++date << "/" << month << "/" << year << " is ";
+		cout << "\n\t\t\t\t" << ++date << "/" << month << "/" << year << " is ";
 		i=i%7;
 		obj.day(i);
 	}
-	else if (i == 2) //Option 2
+	else if (i == 2) 
 	{
-	cout << "\n\t\t Enter month(mm):";
+	cout << "\n\t\t\t\t Enter month:(mm)";
 	cin >> month;
 	month2:
 	if (month>12 || month<1) 
 	{
-		cout << "\n\t\t Please provide valid month.\n\t\t Press any key";
+		cout << "\n\t\t\t\t Please provide valid month.\t\t\t\t Press any key";
 		getch();
 		goto month2;
 	}
-	cout << "\n\t\t Enter year(yyyy):";
+	cout << "\t\t\t\t Enter year:(yyyy)";
 	cin >> year;
 	year2:
 	if (year>2400 || year<1900) 
@@ -216,14 +216,14 @@ int main()
 		getch();
 		goto year2;
 	}
-	calendar obj;
+	calender obj;
 	obj.monthcal(month, year);
 	}
 	else if (i == 3)
 	{	
 		exit(0);
 	}
-	cout << "\n\t\t Would you like to try again (y/n):";
+	cout << "\n\n\t\t\t\t Would you like to try again (y/n)";
 	ch = _getch();
 } 
 while (ch == 'y' || ch == 'Y');
